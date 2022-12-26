@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Random Cube</string>
+
+    <string name="numbers">Цифри</string>
+    <string name="words">Слова</string>
+    <string name="categories">Категорії</string>
+
+    <string name="numbers_range">Діапазон цифр</string>
+    <string name="start">Від</string>
+    <string name="end">До</string>
+
+    <string name="words_label">Список слів</string>
+    <string name="add_word">Введіть слово</string>
+
+    <string name="categories_label">Виберіть категорію</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

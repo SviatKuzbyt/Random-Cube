@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/numbers_menu"
+        android:title="@string/numbers"
+        android:icon="@drawable/numbers_ic"
+        />
+    <item
+        android:id="@+id/words_menu"
+        android:title="@string/words"
+        android:icon="@drawable/words_ic"
+        />
+    <item
+        android:id="@+id/categories_menu"
+        android:title="@string/categories"
+        android:icon="@drawable/cube_ic"
+        />
+
+</menu>
