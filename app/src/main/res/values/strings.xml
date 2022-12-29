@@ -14,5 +14,8 @@
 
     <string name="categories_label">Виберіть категорію</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_read_num">Помилка читання попередніх записів</string>
+    <string name="error_write_num">Введіть допустиме число</string>
+    <string name="error_random">Введено недопустимі дані</string>
+    <string name="touch_me">Натисни на мене</string>
 </resources>

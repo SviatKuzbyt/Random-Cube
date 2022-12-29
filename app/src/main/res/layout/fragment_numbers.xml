@@ -34,32 +34,35 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/background_edit_text"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:paddingHorizontal="16dp"
         android:textAppearance="@style/text_numbers_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textStartRangeLabel"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:maxLength="8"
+        />
 
     <EditText
-        android:id="@+id/textEndRangeLabel"
+        android:id="@+id/editTextEndRange"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/background_edit_text"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="numberSigned"
         android:textAppearance="@style/text_numbers_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEndRange"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEndRangeLabel"
         tools:ignore="SpeakableTextPresentCheck"
-        android:paddingHorizontal="16dp"/>
+        android:paddingHorizontal="16dp"
+        android:maxLength="8"/>
 
     <TextView
-        android:id="@+id/editTextEndRange"
+        android:id="@+id/editTextEndRangeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

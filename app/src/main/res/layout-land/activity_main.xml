@@ -4,7 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.main.MainActivity"
+    android:id="@+id/mainLayout">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cube"
+        android:layout_width="216dp"
+        android:layout_height="216dp"
+        android:layout_marginStart="48dp"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="?backgroundCardView"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:id="@+id/textOnCube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/open_sans_bold"
+            android:padding="16dp"
+            android:text="@string/touch_me"
+            android:textAlignment="center"
+            android:textColor="?textColor" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/settings_container"
@@ -13,8 +38,9 @@
         android:layout_marginStart="48dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/cube"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="0dp">
 
         <androidx.fragment.app.FragmentContainerView
 
@@ -26,18 +52,6 @@
             tools:layout="@layout/fragment_numbers" />
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="216dp"
-        android:layout_height="216dp"
-        android:layout_marginStart="48dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Button"
-        android:textColor="#263238"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
@@ -48,6 +62,6 @@
         android:theme="@style/BottomNavigationSettings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/cube"
         app:menu="@menu/settings_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
