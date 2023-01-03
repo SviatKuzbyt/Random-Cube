@@ -23,4 +23,29 @@
     <string name="clear_message">Очистити весь список слів?</string>
     <string name="yes">так</string>
     <string name="no">ні</string>
+    
+    <string name="yes_no">Так/ні</string>
+    <string name="cube">Шестигранний куб</string>
+    <string name="ball">Шар долі</string>
+    
+    <string name="one_ball_answer">Безумовно</string>
+    <string name="two_ball_answer">Вирішено</string>
+    <string name="three_ball_answer">Ніяких сумнівів</string>
+    <string name="four_ball_answer">Однозначно так</string>
+    <string name="five_ball_answer">Можеш бути впевнений(а) в цьому</string>
+    <string name="six_ball_answer">Мені здається - "так"</string>
+    <string name="seven_ball_answer">Скоріше за все</string>
+    <string name="eight_ball_answer">Преспективно</string>
+    <string name="nine_ball_answer">Знаки говорять - "так"</string>
+    <string name="ten_ball_answer">Так</string>
+    <string name="eleven_ball_answer">Ще не ясно, спробуй ще раз</string>
+    <string name="twelve_ball_answer">Запитай пізніше</string>
+    <string name="thirteen_ball_answer">Краще не розказувати</string>
+    <string name="fourteen_answer">Зараз неможливо передбачити</string>
+    <string name="fifteen_ball_answer">Сконцентруйся і спитай знову</string>
+    <string name="sixteen_ball_answer">Навіть не думай</string>
+    <string name="seventeen_ball_answer">Моя відповідь - "ні"</string>
+    <string name="eighteen_ball_answer">За моїми даними - "ні"</string>
+    <string name="nineteen_ball_answer">Преспективи не дуже…</string>
+    <string name="twenty_ball_answer">Дуже сумнівно</string>
 </resources>

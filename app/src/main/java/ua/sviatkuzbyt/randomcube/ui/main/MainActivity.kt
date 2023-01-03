@@ -23,7 +23,7 @@ import ua.sviatkuzbyt.randomcube.ui.main.elements.CubeAnimation
 
 val Context.intRangeDataStore by preferencesDataStore(name = "intRangeDataStore")
 
-class MainActivity : AppCompatActivity() {
+class MainActivity() : AppCompatActivity() {
     lateinit var settingsContainer: CardView
     lateinit var bottomNavigationView: BottomNavigationView
     lateinit var viewModel: MainViewModel

@@ -12,15 +12,7 @@ import ua.sviatkuzbyt.randomcube.data.repositories.MainRepository
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
     val textOnCube = MutableLiveData<String>()
-    private var targetItemOnNavigationBar = R.id.numbers_menu
     private val mainRepository = MainRepository(application)
-
-    fun isSelectedTargetItemOnNavigationBar(itemId: Int): Boolean{
-        return targetItemOnNavigationBar == itemId
-    }
-    fun setTargetItemOnNavigationBar(itemId: Int){
-        targetItemOnNavigationBar = itemId
-    }
 
     fun getRandomValue(id: Int) = viewModelScope.launch(Dispatchers.IO){
         textOnCube.postValue(
