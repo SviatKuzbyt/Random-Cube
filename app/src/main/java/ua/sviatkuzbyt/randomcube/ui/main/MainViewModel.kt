@@ -22,9 +22,9 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         targetItemOnNavigationBar = itemId
     }
 
-    fun getRandomValue() = viewModelScope.launch(Dispatchers.IO){
+    fun getRandomValue(id: Int) = viewModelScope.launch(Dispatchers.IO){
         textOnCube.postValue(
-            mainRepository.getRandomValue(targetItemOnNavigationBar)
+            mainRepository.getRandomValue(id)
         )
     }
 

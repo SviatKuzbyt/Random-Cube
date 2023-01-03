@@ -18,4 +18,9 @@
     <string name="error_write_num">Введіть допустиме число</string>
     <string name="error_random">Введено недопустимі дані</string>
     <string name="touch_me">Натисни на мене</string>
+    <string name="clear">Очистити</string>
+    <string name="clear_tittle">Попередження</string>
+    <string name="clear_message">Очистити весь список слів?</string>
+    <string name="yes">так</string>
+    <string name="no">ні</string>
 </resources>
