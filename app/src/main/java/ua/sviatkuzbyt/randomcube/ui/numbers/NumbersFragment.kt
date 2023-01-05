@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ua.sviatkuzbyt.randomcube.R
 import ua.sviatkuzbyt.randomcube.ui.hideKeyboardFrom
@@ -21,7 +20,6 @@ class NumbersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         viewModel = ViewModelProvider(this)[NumbersViewModel::class.java]
         return inflater.inflate(R.layout.fragment_numbers, container, false)
     }
@@ -50,13 +48,23 @@ class NumbersFragment : Fragment() {
 
     private fun observeStartNumber(){
         viewModel.startNumber.observe(requireActivity()) {
-            editTextStartRange.setText(it.toString())
+            try {
+                editTextStartRange.setText(it.toString())
+            } catch (e: Exception){
+                makeToastError(R.string.error_read_num, requireActivity())
+            }
+
         }
     }
 
     private fun observeEndNumber(){
         viewModel.endNumber.observe(requireActivity()){
-            editTextEndRange.setText(it.toString())
+            try {
+                editTextEndRange.setText(it.toString())
+            } catch (e: Exception){
+                makeToastError(R.string.error_write_num, requireActivity())
+            }
+
         }
     }
 
@@ -65,7 +73,7 @@ class NumbersFragment : Fragment() {
             viewModel.setStartNumber(editTextStartRange.text.toString().toInt())
         }
         catch (e: Exception){
-            makeToastError(getString(R.string.error_write_num), requireActivity())
+            makeToastError(R.string.error_write_num, requireActivity())
         }
     }
 
@@ -74,7 +82,7 @@ class NumbersFragment : Fragment() {
             viewModel.setEndNumber(editTextEndRange.text.toString().toInt())
             hideKeyboardFrom(requireActivity(), editTextEndRange)
         } catch (e: Exception){
-            makeToastError(getString(R.string.error_write_num), requireActivity())
+            makeToastError(R.string.error_write_num, requireActivity())
         }
     }
 }

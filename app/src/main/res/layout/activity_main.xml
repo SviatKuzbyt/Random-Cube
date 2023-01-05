@@ -50,7 +50,8 @@
             android:layout_margin="16dp"
             tools:layout="@layout/fragment_numbers"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/setting_navigation"/>
+            app:navGraph="@navigation/setting_navigation"
+            tools:ignore="FragmentTagUsage" />
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

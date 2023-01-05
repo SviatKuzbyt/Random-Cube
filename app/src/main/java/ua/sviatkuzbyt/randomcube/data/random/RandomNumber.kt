@@ -2,19 +2,26 @@ package ua.sviatkuzbyt.randomcube.data.random
 
 import android.content.Context
 import kotlinx.coroutines.delay
-import ua.sviatkuzbyt.randomcube.data.dataStore.IntRangeDataStore
+import ua.sviatkuzbyt.randomcube.data.repositories.NumbersRepository
 import kotlin.random.Random
 
+var isChangeNumbers = true
 class RandomNumber(context: Context) {
-    private val intRangeDataStore = IntRangeDataStore(context)
+    private val numbersRepository = NumbersRepository(context)
     private var startNumber = 0
     private var endNumber = 0
 
-    suspend fun getNumbers(){
+    private suspend fun getNumbers(){
         delay(100)
-        startNumber = intRangeDataStore.getStartNumber()
-        endNumber = intRangeDataStore.getEndNumber()
+        startNumber = numbersRepository.getStartNumber()
+        endNumber = numbersRepository.getEndNumber()
     }
 
-    fun getRandom() = Random.nextInt(startNumber, endNumber + 1)
+    suspend fun getRandom(): String{
+        if(isChangeNumbers){
+            getNumbers()
+            isChangeNumbers = false
+        }
+        return Random.nextInt(startNumber, endNumber + 1).toString()
+    }
 }

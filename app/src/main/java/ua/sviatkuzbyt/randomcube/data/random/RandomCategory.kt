@@ -6,27 +6,6 @@ import kotlin.random.Random
 
 var selectedCategory = 0
 class RandomCategory(private val context: Context) {
-
-    fun getRandomCategory(): String{
-        return when(selectedCategory){
-            0 -> getRandomYesNo()
-            1 -> getRandomNumberCube()
-            else -> getMagicBallAnswer()
-        }
-    }
-    private fun getRandomYesNo(): String{
-        val number = getRandomNumber(0, 1)
-        return yesNoLis[number]
-    }
-
-    private fun getRandomNumberCube() = getRandomNumber(1, 6).toString()
-
-    private fun getMagicBallAnswer(): String{
-        val number = getRandomNumber(0, magicBallList.size-1)
-        val word = magicBallList[number]
-        return context.getString(word)
-    }
-
     private val yesNoLis = arrayOf(
         context.getString(R.string.yes),
         context.getString(R.string.no)
@@ -54,6 +33,26 @@ class RandomCategory(private val context: Context) {
         R.string.nineteen_ball_answer,
         R.string.twenty_ball_answer,
     )
+
+    fun getRandomCategory(): String{
+        return when(selectedCategory){
+            0 -> getRandomYesNo()
+            1 -> getRandomNumberCube()
+            else -> getMagicBallAnswer()
+        }
+    }
+    private fun getRandomYesNo(): String{
+        val number = getRandomNumber(0, 1)
+        return yesNoLis[number]
+    }
+
+    private fun getRandomNumberCube() = getRandomNumber(1, 6).toString()
+
+    private fun getMagicBallAnswer(): String{
+        val number = getRandomNumber(0, magicBallList.size-1)
+        val word = magicBallList[number]
+        return context.getString(word)
+    }
 
     private fun getRandomNumber(min: Int, max: Int) =
         Random.nextInt(min, max+1)

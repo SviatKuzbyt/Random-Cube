@@ -7,7 +7,7 @@ import ua.sviatkuzbyt.randomcube.data.random.RandomNumber
 import ua.sviatkuzbyt.randomcube.data.random.RandomWords
 
 class MainRepository(private val context: Context) {
-    private val randomNumber: RandomNumber = RandomNumber(context)
+    private var randomNumber: RandomNumber? = null
     private var randomWords: RandomWords? = null
     private var randomCategory: RandomCategory? = null
 
@@ -21,36 +21,40 @@ class MainRepository(private val context: Context) {
 
     private suspend fun getRandomNumber(): String{
         return try {
-            randomNumber.getNumbers()
-            randomNumber.getRandom().toString()
+            initRandomNumbers()
+            randomNumber!!.getRandom()
         } catch (e: Exception){
             context.getString(R.string.error_random)
         }
     }
-
-    fun getRandomCategory(): String{
-        initRandomCategory()
-        return randomCategory!!.getRandomCategory()
+    private fun initRandomNumbers(){
+        if (randomNumber == null)
+            randomNumber = RandomNumber(context)
     }
 
     private fun getRandomWord(): String{
         return try {
-            initRandomNumber()
-            randomWords!!.loadWords()
+            initRandomWords()
             randomWords!!.getRandom()
         } catch (e: Exception){
             context.getString(R.string.error_random)
         }
     }
-
-    private fun initRandomNumber(){
+    private fun initRandomWords(){
         if (randomWords == null)
             randomWords = RandomWords(context)
     }
 
+    private fun getRandomCategory(): String{
+        return try {
+            initRandomCategory()
+            randomCategory!!.getRandomCategory()
+        } catch (e: Exception){
+            context.getString(R.string.error_random)
+        }
+    }
     private fun initRandomCategory(){
         if (randomCategory == null)
             randomCategory = RandomCategory(context)
     }
-
 }

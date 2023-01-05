@@ -13,16 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.sviatkuzbyt.randomcube.R
 import ua.sviatkuzbyt.randomcube.data.wordsDataBase.Words
+import ua.sviatkuzbyt.randomcube.ui.makeToastError
 import ua.sviatkuzbyt.randomcube.ui.words.elements.ClearAlertDialog
 import ua.sviatkuzbyt.randomcube.ui.words.elements.WordsAdapter
 
 class WordsFragment : Fragment() {
-    lateinit var viewModel: WordsViewModel
-    lateinit var editTextAdd: EditText
-    lateinit var recycleWords: RecyclerView
-    lateinit var wordsAdapter: WordsAdapter
-    lateinit var textClear: TextView
-    lateinit var clearAlertDialog: ClearAlertDialog
+    private lateinit var viewModel: WordsViewModel
+    private lateinit var editTextAdd: EditText
+    private lateinit var recycleWords: RecyclerView
+    private lateinit var wordsAdapter: WordsAdapter
+    private lateinit var textClear: TextView
+    private lateinit var clearAlertDialog: ClearAlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,24 +52,29 @@ class WordsFragment : Fragment() {
         recycleWords = view.findViewById(R.id.recycleWords)
 
         viewModel.listWords.observe(viewLifecycleOwner){
-            when(viewModel.getModeChangeList()){
-                1 -> {
-                    addListItem(it.size)
+            try {
+                when(viewModel.getModeChangeList()){
+                    1 -> {
+                        addListItem(it.size)
+                    }
+                    2 -> {
+                        val removedPositions = viewModel.getRemovedPosition()
+                        removeListItem(removedPositions, it.size)
+                    }
+                    3 ->{
+                        val oldListSize = viewModel.getOldListSize()
+                        removeAllListItems(oldListSize)
+                    }
+                    else ->{
+                        setRecycleAdapter(it)
+                    }
                 }
-                2 -> {
-                    val removedPositions = viewModel.getRemovedPosition()
-                    removeListItem(removedPositions, it.size)
-                }
-                3 ->{
-                    val oldListSize = viewModel.getOldListSize()
-                    removeAllListItems(oldListSize)
-                }
-                else ->{
-                    setRecycleAdapter(it)
-                }
+                viewModel.clearChangeMode()
+                replaceTextClear(it)
+            } catch (e: Exception){
+                makeToastError(R.string.error_load_list, requireActivity())
             }
-            viewModel.clearChangeMode()
-            replaceTextClear(it)
+
         }
     }
 

@@ -9,9 +9,10 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import ua.sviatkuzbyt.randomcube.data.repositories.NumbersRepository
 
 @RunWith(AndroidJUnit4::class)
-internal class IntRangeDataStoreTest{
+internal class NumbersRepositoryTest{
     private lateinit var appContext: Context
     @Before
     fun setup() {
@@ -21,18 +22,18 @@ internal class IntRangeDataStoreTest{
     @Test
     fun checkStartIntFromDataStore(): Unit = runBlocking {
         launch {
-            val intRangeDataStore = IntRangeDataStore(appContext)
-            intRangeDataStore.setStartNumber(12)
-            Assert.assertEquals(12, intRangeDataStore.getStartNumber())
+            val numbersRepository = NumbersRepository(appContext)
+            numbersRepository.setStartNumber(12)
+            Assert.assertEquals(12, numbersRepository.getStartNumber())
         }
     }
 
     @Test
     fun checkEndIntFromDataStore(): Unit = runBlocking {
         launch {
-            val intRangeDataStore = IntRangeDataStore(appContext)
-            intRangeDataStore.setEndNumber(120)
-            Assert.assertEquals(120, intRangeDataStore.getEndNumber())
+            val numbersRepository = NumbersRepository(appContext)
+            numbersRepository.setEndNumber(120)
+            Assert.assertEquals(120, numbersRepository.getEndNumber())
         }
     }
 }

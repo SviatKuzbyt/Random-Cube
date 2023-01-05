@@ -1,33 +1,37 @@
 <resources>
     <string name="app_name">Random Cube</string>
+    <string name="error_load_list">Не вдалося завантажити список</string>
 
+<!--    MainActivity-->
     <string name="numbers">Цифри</string>
     <string name="words">Слова</string>
     <string name="categories">Категорії</string>
+    <string name="error_random">Введено недопустимі дані</string>
+    <string name="touch_me">Натисни на мене</string>
 
+<!--    Numbers-->
     <string name="numbers_range">Діапазон цифр</string>
     <string name="start">Від</string>
     <string name="end">До</string>
-
-    <string name="words_label">Список слів</string>
-    <string name="add_word">Введіть слово</string>
-
-    <string name="categories_label">Виберіть категорію</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="error_read_num">Помилка читання попередніх записів</string>
     <string name="error_write_num">Введіть допустиме число</string>
-    <string name="error_random">Введено недопустимі дані</string>
-    <string name="touch_me">Натисни на мене</string>
+
+<!--    Words-->
+    <string name="words_label">Список слів</string>
+    <string name="add_word">Введіть слово</string>
     <string name="clear">Очистити</string>
     <string name="clear_tittle">Попередження</string>
     <string name="clear_message">Очистити весь список слів?</string>
     <string name="yes">так</string>
     <string name="no">ні</string>
-    
+
+<!--    Category-->
+    <string name="categories_label">Виберіть категорію</string>
     <string name="yes_no">Так/ні</string>
     <string name="cube">Шестигранний куб</string>
     <string name="ball">Шар долі</string>
-    
+
+<!--    Magic 8 ball-->
     <string name="one_ball_answer">Безумовно</string>
     <string name="two_ball_answer">Вирішено</string>
     <string name="three_ball_answer">Ніяких сумнівів</string>

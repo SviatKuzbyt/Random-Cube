@@ -18,13 +18,13 @@ import ua.sviatkuzbyt.randomcube.ui.makeToastError
 
 val Context.intRangeDataStore by preferencesDataStore(name = "intRangeDataStore")
 
-class MainActivity() : AppCompatActivity() {
-    lateinit var viewModel: MainViewModel
-    lateinit var mainLayout: ConstraintLayout
-    lateinit var settingsContainer: CardView
-    lateinit var bottomNavigationView: BottomNavigationView
-    lateinit var cube: CardView
-    lateinit var textOnCube: TextView
+class MainActivity : AppCompatActivity() {
+    private lateinit var viewModel: MainViewModel
+    private lateinit var mainLayout: ConstraintLayout
+    private lateinit var settingsContainer: CardView
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var cube: CardView
+    private lateinit var textOnCube: TextView
     private lateinit var navController: NavController
     private lateinit var cubeAnimation: CubeAnimation
 
@@ -60,7 +60,7 @@ class MainActivity() : AppCompatActivity() {
         try {
             viewModel.getRandomValue(getCurrentFragment())
         } catch (e: Exception){
-            makeToastError(getString(R.string.error_random), this)
+            makeToastError(R.string.error_random, this)
         }
     }
 

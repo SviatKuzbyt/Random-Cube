@@ -11,6 +11,6 @@ fun hideKeyboardFrom(context: Context, view: View) {
     imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-fun makeToastError(text: String, context: Context){
-    Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+fun makeToastError(text: Int, context: Context){
+    Toast.makeText(context, context.getString(text), Toast.LENGTH_SHORT).show()
 }

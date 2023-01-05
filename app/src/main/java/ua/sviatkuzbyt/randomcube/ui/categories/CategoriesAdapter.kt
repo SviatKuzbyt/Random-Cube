@@ -9,10 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import ua.sviatkuzbyt.randomcube.R
-import ua.sviatkuzbyt.randomcube.data.repositories.CategoryRepositories
+import ua.sviatkuzbyt.randomcube.data.repositories.CategoryData
 
 class CategoriesAdapter(
-    private val dataSet: Array<CategoryRepositories.CategoryData>,
+    private val dataSet: Array<CategoryData>,
     private val context: Context,
     private val viewModel: CategoriesViewModel) :
     RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
@@ -20,7 +20,6 @@ class CategoriesAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageCategory: View
         val textCategory: TextView
-
         init {
             imageCategory = view.findViewById(R.id.imageCategory)
             textCategory = view.findViewById(R.id.textCategory)
@@ -40,13 +39,21 @@ class CategoriesAdapter(
         viewHolder.imageCategory.background = image
 
         if (dataSet[position].isSelected)
-            viewHolder.textCategory.setTextColor(
-                ContextCompat.getColor(context, R.color.blue)
-            )
+            setBlueBackground(viewHolder.itemView)
+        else setTransparentBackground(viewHolder.itemView)
 
         viewHolder.itemView.setOnClickListener {
             viewModel.updateSelectedItem(position)
         }
+    }
+
+    private fun setBlueBackground(itemView: View){
+        itemView.background = ContextCompat.getDrawable(
+                context, R.drawable.background_selected_item_category)
+    }
+    private fun setTransparentBackground(itemView: View){
+        itemView.setBackgroundColor(
+            ContextCompat.getColor(context, R.color.transparent))
     }
 
     override fun getItemCount() = dataSet.size

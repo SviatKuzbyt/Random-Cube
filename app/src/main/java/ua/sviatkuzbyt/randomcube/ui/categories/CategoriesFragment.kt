@@ -9,18 +9,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.sviatkuzbyt.randomcube.R
+import ua.sviatkuzbyt.randomcube.data.repositories.CategoryData
+import ua.sviatkuzbyt.randomcube.ui.makeToastError
 
 class CategoriesFragment : Fragment() {
-
-    lateinit var viewModel: CategoriesViewModel
-    lateinit var categoryRecycle: RecyclerView
-    lateinit var categoriesAdapter: CategoriesAdapter
+    private lateinit var viewModel: CategoriesViewModel
+    private lateinit var categoryRecycle: RecyclerView
+    private lateinit var categoriesAdapter: CategoriesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         viewModel = ViewModelProvider(this)[CategoriesViewModel::class.java]
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
@@ -28,11 +28,32 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         categoryRecycle = view.findViewById(R.id.categoryRecycle)
-        categoryRecycle.layoutManager = LinearLayoutManager(activity)
 
-        viewModel.categoryList.observe(viewLifecycleOwner){
-            categoriesAdapter = CategoriesAdapter(it, requireActivity(), viewModel)
-            categoryRecycle.adapter = categoriesAdapter
+        viewModel.categoryList.observe(viewLifecycleOwner) {
+            try {
+                if (viewModel.getChangeListMode() == 1){
+                    replaceSelectedItems()
+                    viewModel.clearChangeListMode()
+                }
+                else
+                    setRecycleAdapter(it)
+            } catch (e: Exception){
+                makeToastError(R.string.error_load_list, requireActivity())
+            }
+
         }
+    }
+
+    private fun replaceSelectedItems(){
+        categoriesAdapter.notifyItemChanged(
+            viewModel.getLastSelectedItem()) //remove LastSelected
+        categoriesAdapter.notifyItemChanged(
+            viewModel.getTargetSelectItem()) //add TargetSelect
+    }
+
+    private fun setRecycleAdapter(list: Array<CategoryData>){
+        categoryRecycle.layoutManager = LinearLayoutManager(activity)
+        categoriesAdapter = CategoriesAdapter(list, requireActivity(), viewModel)
+        categoryRecycle.adapter = categoriesAdapter
     }
 }

@@ -6,20 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ua.sviatkuzbyt.randomcube.data.wordsDataBase.DataBaseRepository
+import ua.sviatkuzbyt.randomcube.data.repositories.WordsRepository
 import ua.sviatkuzbyt.randomcube.data.wordsDataBase.Words
 
 class WordsViewModel(application: Application): AndroidViewModel(application) {
     val listWords = MutableLiveData<MutableList<Words>>()
     private val _listWords = mutableListOf<Words>()
-    private val dataBaseRepository = DataBaseRepository(application)
+    private val wordsRepository = WordsRepository(application)
     private var modeChangeList = 0
     private var positionRemove = 0
     private var oldListSize = 0
 
     init {
         viewModelScope.launch(Dispatchers.IO){
-            val loadList = dataBaseRepository.getWords()
+            val loadList = wordsRepository.getWords()
             _listWords.addAll(loadList)
             postList(0)
         }
@@ -32,7 +32,7 @@ class WordsViewModel(application: Application): AndroidViewModel(application) {
 
     fun addWord(word: String){
         viewModelScope.launch(Dispatchers.IO){
-            dataBaseRepository.addWord(word)
+            wordsRepository.addWord(word)
             addItemToList(word)
             postList(1)
         }
@@ -41,7 +41,7 @@ class WordsViewModel(application: Application): AndroidViewModel(application) {
         _listWords.add(0, Words(getLastIdFromDB(), word))
     }
     private fun getLastIdFromDB(): Int{
-        return dataBaseRepository.getId()
+        return wordsRepository.getId()
     }
 
     fun deleteWord(position: Int){
@@ -52,7 +52,7 @@ class WordsViewModel(application: Application): AndroidViewModel(application) {
     }
     private fun removeItemFromDB(id: Int) =
         viewModelScope.launch(Dispatchers.IO){
-        dataBaseRepository.deleteWord(id)
+        wordsRepository.deleteWord(id)
     }
     private fun removeItemFromList(position: Int){
         _listWords.removeAt(position)
@@ -66,7 +66,7 @@ class WordsViewModel(application: Application): AndroidViewModel(application) {
     }
     private fun clearDataInDB() =
         viewModelScope.launch(Dispatchers.IO){
-        dataBaseRepository.clear()
+        wordsRepository.clear()
     }
     private fun setOldListSize(){
         oldListSize = _listWords.size
