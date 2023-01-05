@@ -1,7 +1,6 @@
-package ua.sviatkuzbyt.randomcube.ui.categories.elements
+package ua.sviatkuzbyt.randomcube.ui.categories
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,6 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import ua.sviatkuzbyt.randomcube.R
 import ua.sviatkuzbyt.randomcube.data.repositories.CategoryRepositories
-import ua.sviatkuzbyt.randomcube.data.wordsDataBase.Words
-import ua.sviatkuzbyt.randomcube.ui.categories.CategoriesViewModel
-import ua.sviatkuzbyt.randomcube.ui.words.WordsViewModel
 
 class CategoriesAdapter(
     private val dataSet: Array<CategoryRepositories.CategoryData>,

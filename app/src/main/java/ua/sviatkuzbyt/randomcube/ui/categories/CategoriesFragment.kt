@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ua.sviatkuzbyt.randomcube.R
-import ua.sviatkuzbyt.randomcube.ui.categories.elements.CategoriesAdapter
 
 class CategoriesFragment : Fragment() {
 

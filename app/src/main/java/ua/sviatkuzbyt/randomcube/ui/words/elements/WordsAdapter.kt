@@ -1,6 +1,5 @@
 package ua.sviatkuzbyt.randomcube.ui.words.elements
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ class WordsAdapter(private val dataSet: MutableList<Words>, private val viewMode
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textWord: TextView
         val deleteElement: View
-
         init {
             textWord = view.findViewById(R.id.textWord)
             deleteElement = view.findViewById(R.id.deleteElement)
@@ -33,7 +31,6 @@ class WordsAdapter(private val dataSet: MutableList<Words>, private val viewMode
         viewHolder.textWord.text = dataSet[position].word
         viewHolder.deleteElement.setOnClickListener {
             viewModel.deleteWord(position)
-            Log.v("removedPositions", "position in adapter - $position")
         }
     }
 

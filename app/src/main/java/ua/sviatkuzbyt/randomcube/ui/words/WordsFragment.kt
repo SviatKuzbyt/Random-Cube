@@ -1,7 +1,6 @@
 package ua.sviatkuzbyt.randomcube.ui.words
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,60 +22,80 @@ class WordsFragment : Fragment() {
     lateinit var recycleWords: RecyclerView
     lateinit var wordsAdapter: WordsAdapter
     lateinit var textClear: TextView
+    lateinit var clearAlertDialog: ClearAlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         viewModel = ViewModelProvider(this)[WordsViewModel::class.java]
         return inflater.inflate(R.layout.fragment_words, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         editTextAdd = view.findViewById(R.id.editTextAdd)
+        editTextAdd.setOnEditorActionListener { _, _, _ ->
+            viewModel.addWord(getAddEditText())
+            clearAddEditText()
+            true
+        }
+
+        clearAlertDialog = ClearAlertDialog(requireActivity(), viewModel)
         textClear = view.findViewById(R.id.textClear)
+        textClear.setOnClickListener {
+            clearAlertDialog.showDialog()
+        }
 
         recycleWords = view.findViewById(R.id.recycleWords)
-        recycleWords.layoutManager = LinearLayoutManager(activity)
 
         viewModel.listWords.observe(viewLifecycleOwner){
             when(viewModel.getModeChangeList()){
                 1 -> {
-                    wordsAdapter.notifyItemInserted(0)
-                    wordsAdapter.notifyItemRangeChanged(0, it.size)
+                    addListItem(it.size)
                 }
                 2 -> {
                     val removedPositions = viewModel.getRemovedPosition()
-                    wordsAdapter.notifyItemRemoved(removedPositions)
-                    wordsAdapter.notifyItemRangeChanged(removedPositions, it.size)
+                    removeListItem(removedPositions, it.size)
                 }
                 3 ->{
                     val oldListSize = viewModel.getOldListSize()
-                    wordsAdapter.notifyItemRangeRemoved(0, oldListSize)
-                    wordsAdapter.notifyItemRangeChanged(0, oldListSize)
+                    removeAllListItems(oldListSize)
                 }
                 else ->{
-                    wordsAdapter = WordsAdapter(it, viewModel)
-                    recycleWords.adapter = wordsAdapter
+                    setRecycleAdapter(it)
                 }
             }
-            Log.v("clearList", wordsAdapter.itemCount.toString())
             viewModel.clearChangeMode()
             replaceTextClear(it)
         }
+    }
 
-        editTextAdd.setOnEditorActionListener { _, _, _ ->
-            viewModel.addWord(editTextAdd.text.toString())
-            editTextAdd.setText("")
-            true
-        }
+    private fun getAddEditText() = editTextAdd.text.toString()
+    private fun clearAddEditText(){
+        editTextAdd.setText("")
+    }
 
-        val clearAlertDialog = ClearAlertDialog(requireActivity(), viewModel)
-        textClear.setOnClickListener {
-            clearAlertDialog.showDialog()
-        }
+    private fun addListItem(size: Int){
+        wordsAdapter.notifyItemInserted(0)
+        wordsAdapter.notifyItemRangeChanged(0, size)
+    }
+
+    private fun removeListItem(removedPositions: Int, size: Int){
+        wordsAdapter.notifyItemRemoved(removedPositions)
+        wordsAdapter.notifyItemRangeChanged(removedPositions, size)
+    }
+
+    private fun removeAllListItems(oldListSize: Int){
+        wordsAdapter.notifyItemRangeRemoved(0, oldListSize)
+        wordsAdapter.notifyItemRangeChanged(0, oldListSize)
+    }
+
+    private fun setRecycleAdapter(list: MutableList<Words>){
+        recycleWords.layoutManager = LinearLayoutManager(activity)
+        wordsAdapter = WordsAdapter(list, viewModel)
+        recycleWords.adapter = wordsAdapter
     }
 
     private fun replaceTextClear(list: MutableList<Words>){
@@ -85,7 +104,6 @@ class WordsFragment : Fragment() {
         else if(!textClear.isVisible)
             showTextClear()
     }
-
     private fun showTextClear(){
         textClear.visibility = View.VISIBLE
     }
