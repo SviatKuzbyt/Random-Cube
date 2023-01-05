@@ -49,7 +49,8 @@ class CategoriesAdapter(
 
     private fun setBlueBackground(itemView: View){
         itemView.background = ContextCompat.getDrawable(
-                context, R.drawable.background_selected_item_category)
+                context, R.drawable.background_edit_text
+        )
     }
     private fun setTransparentBackground(itemView: View){
         itemView.setBackgroundColor(

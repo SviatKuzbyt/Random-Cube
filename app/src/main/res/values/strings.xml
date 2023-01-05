@@ -1,55 +1,55 @@
 <resources>
     <string name="app_name">Random Cube</string>
-    <string name="error_load_list">Не вдалося завантажити список</string>
+    <string name="error_load_list">Failed to load list</string>
 
 <!--    MainActivity-->
-    <string name="numbers">Цифри</string>
-    <string name="words">Слова</string>
-    <string name="categories">Категорії</string>
-    <string name="error_random">Введено недопустимі дані</string>
-    <string name="touch_me">Натисни на мене</string>
+    <string name="numbers">Numbers</string>
+    <string name="words">Words</string>
+    <string name="categories">Categories</string>
+    <string name="error_random">Invalid data entered</string>
+    <string name="touch_me">Click on me</string>
 
 <!--    Numbers-->
-    <string name="numbers_range">Діапазон цифр</string>
-    <string name="start">Від</string>
-    <string name="end">До</string>
-    <string name="error_read_num">Помилка читання попередніх записів</string>
-    <string name="error_write_num">Введіть допустиме число</string>
+    <string name="numbers_range">A range of numbers</string>
+    <string name="start">From</string>
+    <string name="end">To</string>
+    <string name="error_read_num">Error reading previous records</string>
+    <string name="error_write_num">Enter a valid number</string>
 
 <!--    Words-->
-    <string name="words_label">Список слів</string>
-    <string name="add_word">Введіть слово</string>
-    <string name="clear">Очистити</string>
-    <string name="clear_tittle">Попередження</string>
-    <string name="clear_message">Очистити весь список слів?</string>
-    <string name="yes">так</string>
-    <string name="no">ні</string>
+    <string name="words_label">List of words</string>
+    <string name="add_word">Enter the word</string>
+    <string name="clear">Clean up</string>
+    <string name="clear_tittle">Warning</string>
+    <string name="clear_message">Clear the entire list of words?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 <!--    Category-->
-    <string name="categories_label">Виберіть категорію</string>
-    <string name="yes_no">Так/ні</string>
-    <string name="cube">Шестигранний куб</string>
-    <string name="ball">Шар долі</string>
+    <string name="categories_label">Select a category</string>
+    <string name="yes_no">Yes or No</string>
+    <string name="cube">Gaming dice</string>
+    <string name="ball">Layer of fate</string>
 
 <!--    Magic 8 ball-->
-    <string name="one_ball_answer">Безумовно</string>
-    <string name="two_ball_answer">Вирішено</string>
-    <string name="three_ball_answer">Ніяких сумнівів</string>
-    <string name="four_ball_answer">Однозначно так</string>
-    <string name="five_ball_answer">Можеш бути впевнений(а) в цьому</string>
-    <string name="six_ball_answer">Мені здається - "так"</string>
-    <string name="seven_ball_answer">Скоріше за все</string>
-    <string name="eight_ball_answer">Преспективно</string>
-    <string name="nine_ball_answer">Знаки говорять - "так"</string>
-    <string name="ten_ball_answer">Так</string>
-    <string name="eleven_ball_answer">Ще не ясно, спробуй ще раз</string>
-    <string name="twelve_ball_answer">Запитай пізніше</string>
-    <string name="thirteen_ball_answer">Краще не розказувати</string>
-    <string name="fourteen_answer">Зараз неможливо передбачити</string>
-    <string name="fifteen_ball_answer">Сконцентруйся і спитай знову</string>
-    <string name="sixteen_ball_answer">Навіть не думай</string>
-    <string name="seventeen_ball_answer">Моя відповідь - "ні"</string>
-    <string name="eighteen_ball_answer">За моїми даними - "ні"</string>
-    <string name="nineteen_ball_answer">Преспективи не дуже…</string>
-    <string name="twenty_ball_answer">Дуже сумнівно</string>
+    <string name="one_ball_answer">Certainly</string>
+    <string name="two_ball_answer">It has been resolved</string>
+    <string name="three_ball_answer">No doubts</string>
+    <string name="four_ball_answer">Definitely yes</string>
+    <string name="five_ball_answer">You can be sure of that</string>
+    <string name="six_ball_answer">I think so</string>
+    <string name="seven_ball_answer">Most likely</string>
+    <string name="eight_ball_answer">Promisingly</string>
+    <string name="nine_ball_answer">The signs say yes</string>
+    <string name="ten_ball_answer">So</string>
+    <string name="eleven_ball_answer">Still not clear, try again</string>
+    <string name="twelve_ball_answer">Ask later</string>
+    <string name="thirteen_ball_answer">It is better not to tell</string>
+    <string name="fourteen_answer">Now it is impossible to predict</string>
+    <string name="fifteen_ball_answer">Concentrate and ask again</string>
+    <string name="sixteen_ball_answer">Don\'t even think</string>
+    <string name="seventeen_ball_answer">My answer is no</string>
+    <string name="eighteen_ball_answer">According to my data - no</string>
+    <string name="nineteen_ball_answer">The prospects are not very...</string>
+    <string name="twenty_ball_answer">Very doubtful</string>
 </resources>
