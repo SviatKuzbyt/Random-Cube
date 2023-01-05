@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ua.sviatkuzbyt.randomcube.R
 import ua.sviatkuzbyt.randomcube.ui.hideKeyboardFrom
+import ua.sviatkuzbyt.randomcube.ui.makeToastError
 
 class NumbersFragment : Fragment() {
     private lateinit var editTextStartRange: EditText
@@ -24,8 +25,6 @@ class NumbersFragment : Fragment() {
         viewModel = ViewModelProvider(this)[NumbersViewModel::class.java]
         return inflater.inflate(R.layout.fragment_numbers, container, false)
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,27 +49,15 @@ class NumbersFragment : Fragment() {
     }
 
     private fun observeStartNumber(){
-        try {
-            viewModel.startNumber.observe(requireActivity()){
-                editTextStartRange.setText(it.toString())
-            }
-        } catch (e: Exception){
-            makeToastError(getString(R.string.error_read_num))
+        viewModel.startNumber.observe(requireActivity()) {
+            editTextStartRange.setText(it.toString())
         }
     }
 
     private fun observeEndNumber(){
-        try {
-            viewModel.endNumber.observe(requireActivity()){
-                editTextEndRange.setText(it.toString())
-            }
-        } catch (e: Exception){
-            makeToastError(getString(R.string.error_read_num))
+        viewModel.endNumber.observe(requireActivity()){
+            editTextEndRange.setText(it.toString())
         }
-    }
-
-    private fun makeToastError(message: String){
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun setStartNumberWhenHasFocus(){
@@ -78,7 +65,7 @@ class NumbersFragment : Fragment() {
             viewModel.setStartNumber(editTextStartRange.text.toString().toInt())
         }
         catch (e: Exception){
-            makeToastError(getString(R.string.error_write_num))
+            makeToastError(getString(R.string.error_write_num), requireActivity())
         }
     }
 
@@ -87,7 +74,7 @@ class NumbersFragment : Fragment() {
             viewModel.setEndNumber(editTextEndRange.text.toString().toInt())
             hideKeyboardFrom(requireActivity(), editTextEndRange)
         } catch (e: Exception){
-            makeToastError(getString(R.string.error_write_num))
+            makeToastError(getString(R.string.error_write_num), requireActivity())
         }
     }
 }

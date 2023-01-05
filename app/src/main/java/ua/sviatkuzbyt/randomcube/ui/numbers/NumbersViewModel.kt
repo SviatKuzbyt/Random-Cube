@@ -1,7 +1,6 @@
 package ua.sviatkuzbyt.randomcube.ui.numbers
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -28,15 +27,16 @@ class NumbersViewModel(application: Application): AndroidViewModel(application) 
         endNumber.postValue(intRangeDataStore.getEndNumber())
     }
 
-    fun setStartNumber(number: Int) = viewModelScope.launch(Dispatchers.IO){
-        startNumber.postValue(number)
-        intRangeDataStore.setStartNumber(number)
-
+    fun setStartNumber(number: Int) {
+        startNumber.value = number
+        viewModelScope.launch(Dispatchers.IO){
+            intRangeDataStore.setStartNumber(number)
+        }
     }
 
-     fun setEndNumber(number: Int){
+    fun setEndNumber(number: Int){
+        endNumber.value = number
         viewModelScope.launch(Dispatchers.IO) {
-            endNumber.postValue(number)
             intRangeDataStore.setEndNumber(number)
         }
     }
