@@ -35,8 +35,8 @@ class ClearAlertDialog(private val context: Context, private val viewModel: Word
         alertDialogBuild.setPositiveButton(context.getString(R.string.yes)){ _, _ ->
             clearList()
         }
-        alertDialogBuild.setNegativeButton(context.getString(R.string.no)){ _, _ ->
-            alertDialogPlay.cancel()
+        alertDialogBuild.setNegativeButton(context.getString(R.string.no)){ dialog, _ ->
+            dialog.cancel()
         }
     }
 

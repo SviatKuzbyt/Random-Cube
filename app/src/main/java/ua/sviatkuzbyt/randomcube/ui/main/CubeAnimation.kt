@@ -1,4 +1,4 @@
-package ua.sviatkuzbyt.randomcube.ui.main.elements
+package ua.sviatkuzbyt.randomcube.ui.main
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -33,10 +33,13 @@ class CubeAnimation(cube: CardView, textOnCube: TextView) {
     }
 
     fun play(){
-        rotationCube.start()
-        textAlpha.start()
         AnimatorSet().apply {
-            play(scaleDownX).with(scaleDownY).before(scaleUpX).before(scaleUpY)
+            play(rotationCube)
+                .with(textAlpha)
+            play(scaleDownX)
+                .with(scaleDownY)
+                .before(scaleUpX)
+                .before(scaleUpY)
             start()
         }
     }

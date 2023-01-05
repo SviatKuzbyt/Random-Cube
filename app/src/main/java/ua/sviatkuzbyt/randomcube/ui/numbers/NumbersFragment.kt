@@ -1,6 +1,5 @@
 package ua.sviatkuzbyt.randomcube.ui.numbers
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,6 @@ class NumbersFragment : Fragment() {
     private lateinit var editTextEndRange: EditText
     private lateinit var viewModel: NumbersViewModel
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,6 +24,8 @@ class NumbersFragment : Fragment() {
         viewModel = ViewModelProvider(this)[NumbersViewModel::class.java]
         return inflater.inflate(R.layout.fragment_numbers, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
